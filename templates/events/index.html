@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Главная :: QueEvent</title>
-</head>
-<body>
-<h1>QueEvent</h1>
-<div>
-    <a href="{% url 'index' %}">Главная</a>
-    {% for event_type in event_types %}
-        <a href="{% url 'by_event_type' event_type.pk %}">{{ event_type.name }}</a>
-    {% endfor %}
-</div>
+{% extends "layout/basic.html" %}
+
+{% block content %}
 {% for event in events %}
     <div>
         <h2>{{ event.title }}</h2>
@@ -21,5 +10,4 @@
         <p>{{ event.published|date:"d.m.Y H:i:s" }}</p>
     </div>
 {% endfor %}
-</body>
-</html>
+{% endblock %}

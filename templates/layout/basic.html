@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Главная {% endblock %} :: QueEvent</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'events/style.css' %}">
+</head>
+<body>
+<header>
+    <h1>Quevent</h1>
+</header>
+<nav>
+    <a href="{% url 'index' %}">Главная</a>
+    <a href="{% url 'add' %}">Добавить</a>
+    {% for event_type in event_types %}
+    <a href="{% url 'by_event_type' event_type.pk %}">{{ event_type.name }}</a>
+    {% endfor %}
+</nav>
+<section>
+    {% block content %}
+    {% endblock %}
+</section>
+</body>
+</html>
