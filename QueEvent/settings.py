@@ -55,7 +55,8 @@ ROOT_URLCONF = 'QueEvent.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [BASE_DIR / 'templates',
+                 '/home/adminus/PycharmProjects/QueEvent/venv/lib/python3.8/site-packages/django_admin_geomap/templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {

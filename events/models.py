@@ -1,4 +1,5 @@
 from django.db import models
+from django_admin_geomap import GeoItem
 
 
 # Create your models here.
@@ -24,3 +25,22 @@ class EventType(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class EventLocation(models.Model, GeoItem):
+
+    @property
+    def geomap_longitude(self):
+        return str(self.lon)
+
+    @property
+    def geomap_latitude(self):
+        return str(self.lat)
+
+    class Meta:
+        verbose_name = "Местонахождение события"
+        verbose_name_plural = "Местонахождения событий"
+
+    event = models.ForeignKey('Event', null=True, on_delete=models.PROTECT, verbose_name='Событие')
+    lon = models.FloatField()  # долгота
+    lat = models.FloatField()  # широта
